@@ -36,3 +36,4 @@ npm run dev
 ```
 
 Open up [http://localhost:5173](http://localhost:5173) and you should be ready to go!
+# Remix-OpenAI-assistant-Template
