@@ -1,6 +1,6 @@
 import type { ActionFunction } from "@remix-run/node";
 import { json } from "@remix-run/react";
-import openai from "~/servers/openAi";
+import { openai } from "~/servers/openAi";
 
 export const action: ActionFunction = async () => {
   if (!openai || !openai.beta.threads.create) {

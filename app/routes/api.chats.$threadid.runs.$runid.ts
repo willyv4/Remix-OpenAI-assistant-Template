@@ -1,7 +1,6 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/react";
-import openai from "~/servers/openAi";
-
+import { openai } from "~/servers/openAi";
 
 export const loader: LoaderFunction = async ({ params }) => {
   const threadId = params.threadid as string;
@@ -21,7 +20,7 @@ export const action: ActionFunction = async ({ params, request }) => {
   if (!data.tool_outputs) {
     return json(
       { message: "failed", error: "tool_outputs is required" },
-      { status: 400 },
+      { status: 400 }
     );
   }
 

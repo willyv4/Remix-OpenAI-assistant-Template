@@ -1,6 +1,6 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/react";
-import openai from "../servers/openAi";
+import { openAiAssistant, openai } from "../servers/openAi";
 
 export const loader: LoaderFunction = async ({ params }) => {
   const threadId = params.threadid;
@@ -32,16 +32,16 @@ export const loader: LoaderFunction = async ({ params }) => {
 export const action: ActionFunction = async ({ request, params }) => {
   const formData = await request.formData();
   const message = formData.get("message") as string;
-  const assistant = ""
+  const assistant = openAiAssistant || "";
   const threadId = params.threadid as string;
-  
+
   return await askAssistant(message, threadId, assistant);
 };
 
 const askAssistant = async (
   message: string,
   threadId: string,
-  assistant: string,
+  assistant: string
 ) => {
   try {
     await openai?.beta.threads.messages.create(threadId, {
@@ -60,4 +60,3 @@ const askAssistant = async (
     return json({ runId: "", status: 400, error });
   }
 };
-

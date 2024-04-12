@@ -1,0 +1,14 @@
+// vite.config.ts
+import { vitePlugin as remix } from "file:///C:/Users/william.valadez/sites/bot-template/node_modules/@remix-run/dev/dist/index.js";
+import { installGlobals } from "file:///C:/Users/william.valadez/sites/bot-template/node_modules/@remix-run/node/dist/index.js";
+import { defineConfig } from "file:///C:/Users/william.valadez/sites/bot-template/node_modules/vite/dist/node/index.js";
+import { vercelPreset } from "file:///C:/Users/william.valadez/sites/bot-template/node_modules/@vercel/remix/vite.js";
+import tsconfigPaths from "file:///C:/Users/william.valadez/sites/bot-template/node_modules/vite-tsconfig-paths/dist/index.mjs";
+installGlobals();
+var vite_config_default = defineConfig({
+  plugins: [remix({ presets: [vercelPreset()] }), tsconfigPaths()]
+});
+export {
+  vite_config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcudHMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCJDOlxcXFxVc2Vyc1xcXFx3aWxsaWFtLnZhbGFkZXpcXFxcc2l0ZXNcXFxcYm90LXRlbXBsYXRlXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ZpbGVuYW1lID0gXCJDOlxcXFxVc2Vyc1xcXFx3aWxsaWFtLnZhbGFkZXpcXFxcc2l0ZXNcXFxcYm90LXRlbXBsYXRlXFxcXHZpdGUuY29uZmlnLnRzXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ltcG9ydF9tZXRhX3VybCA9IFwiZmlsZTovLy9DOi9Vc2Vycy93aWxsaWFtLnZhbGFkZXovc2l0ZXMvYm90LXRlbXBsYXRlL3ZpdGUuY29uZmlnLnRzXCI7aW1wb3J0IHsgdml0ZVBsdWdpbiBhcyByZW1peCB9IGZyb20gXCJAcmVtaXgtcnVuL2RldlwiO1xuaW1wb3J0IHsgaW5zdGFsbEdsb2JhbHMgfSBmcm9tIFwiQHJlbWl4LXJ1bi9ub2RlXCI7XG5pbXBvcnQgeyBkZWZpbmVDb25maWcgfSBmcm9tIFwidml0ZVwiO1xuaW1wb3J0IHsgdmVyY2VsUHJlc2V0IH0gZnJvbSAnQHZlcmNlbC9yZW1peC92aXRlJztcbmltcG9ydCB0c2NvbmZpZ1BhdGhzIGZyb20gXCJ2aXRlLXRzY29uZmlnLXBhdGhzXCI7XG5cbmluc3RhbGxHbG9iYWxzKCk7XG5cbmV4cG9ydCBkZWZhdWx0IGRlZmluZUNvbmZpZyh7XG4gIHBsdWdpbnM6IFtyZW1peCh7IHByZXNldHM6IFt2ZXJjZWxQcmVzZXQoKV0gfSksIHRzY29uZmlnUGF0aHMoKV0sXG59KTtcbiJdLAogICJtYXBwaW5ncyI6ICI7QUFBNlQsU0FBUyxjQUFjLGFBQWE7QUFDalcsU0FBUyxzQkFBc0I7QUFDL0IsU0FBUyxvQkFBb0I7QUFDN0IsU0FBUyxvQkFBb0I7QUFDN0IsT0FBTyxtQkFBbUI7QUFFMUIsZUFBZTtBQUVmLElBQU8sc0JBQVEsYUFBYTtBQUFBLEVBQzFCLFNBQVMsQ0FBQyxNQUFNLEVBQUUsU0FBUyxDQUFDLGFBQWEsQ0FBQyxFQUFFLENBQUMsR0FBRyxjQUFjLENBQUM7QUFDakUsQ0FBQzsiLAogICJuYW1lcyI6IFtdCn0K

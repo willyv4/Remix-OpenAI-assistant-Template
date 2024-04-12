@@ -1,6 +1,7 @@
 import { useFetcher } from "@remix-run/react";
 import { marked } from "marked";
-import React, { useEffect, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
+import { MarkDownBotResponse } from "~/components/chat.ui";
 
 // async function processActions(
 //   requiredAction: any,
@@ -68,7 +69,8 @@ function waitForRunCompletion(
   });
 }
 
-const formatResp = (resp: string) => ({ assistant: resp });
+const formatChatResp = (resp: string | ReactNode) => ({ assistant: resp });
+const formatUserResp = (resp: string) => ({ user: String(resp) });
 
 async function getLatestMessage(threadId: string) {
   const data = await fetch(`/api/chats/${threadId}/messages`);
@@ -78,7 +80,7 @@ async function getLatestMessage(threadId: string) {
 
 export interface ChatMessage {
   user?: string;
-  assistant?: string;
+  assistant?: string | ReactNode;
 }
 
 export const useMessageFetcher = () => {
@@ -110,15 +112,15 @@ export const useMessageFetcher = () => {
   const [isLoading, setIsLoading] = useState(false);
   const runId = submitMessageFetcher?.data?.runId ?? "";
   const [chatThread, setChatThread] = useState<ChatMessage[]>([
-    formatResp("i will answer all your questions."),
+    formatChatResp("i will answer all your questions."),
   ]);
 
   useEffect(() => {
-    const message = submitMessageFetcher?.formData?.get("message");
+    const message = submitMessageFetcher?.formData?.get("message") as string;
     if (message) {
       setIsLoading(true);
       if (message)
-        setChatThread((prevData) => [...prevData, { user: String(message) }]);
+        setChatThread((prevData) => [...prevData, formatUserResp(message)]);
     }
   }, [submitMessageFetcher.formData]);
 
@@ -141,13 +143,11 @@ export const useMessageFetcher = () => {
     if (chatResp) {
       setChatThread((prevChatThread) => [
         ...prevChatThread,
-        formatResp(<MarkDownBotResponse chatResp={chatResp} />),
+        formatChatResp(<MarkDownBotResponse chatResp={chatResp} />),
       ]);
       setChatResp("");
     }
   }, [chatResp]);
-
-  useLoadingNotifier(isLoading, setChatThread);
 
   return {
     isLoading,
