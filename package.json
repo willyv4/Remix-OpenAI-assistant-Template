@@ -6,7 +6,8 @@
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "updatebot": "node scripts/run.bot.update"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",

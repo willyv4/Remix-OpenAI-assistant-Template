@@ -10,8 +10,8 @@ export const action: ActionFunction = async () => {
       error: "Could not create thread",
     });
   }
+  
   const thread = await openai.beta.threads.create();
-
   if (!thread.id) {
     return json({
       threadId: "",
